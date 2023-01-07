@@ -4,34 +4,37 @@
     box-sizing: border-box;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 .game-board {
     width: 100%;
-    height: 80vh;
-    border-bottom: 10px solid rgb(10, 112, 1);
+    height: 85vh;
     background-image: linear-gradient(to bottom, #87CEEB, #E0F6FF);
     margin: auto;
     position: relative;
     overflow: hidden;
-    
 }
 
 .pipe {
     position: absolute;
     bottom: 0;
-    width: 80px;
-    
+    width: 5rem;
     animation: pipe-animation 1.5s infinite linear;
 }
 
 .mario {
     position: absolute;
-    width: 170px;
+    width: 10rem;
     bottom: 0px;
 }
 
 .clouds {
     position: absolute;
-    width: 300px;
+    width: 18rem;
     top: 1%;
     animation: clouds-animation 15s linear infinite;
 }
@@ -39,21 +42,60 @@
 .floor {
     position: absolute;
     width: 100%;
-    height: 110vh;
+    height: 15vh;
     bottom: 0;
 }
 
-.game-over {
+.game-over-screen {
+    display: none; 
     
+    position: absolute;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 2em;
+    color: white;
+    background-color: rgb(12, 0, 0);
+    width: 100%;
+    height: 100%;
+}
+
+.new-game {
+    position: absolute;
+    bottom: 30px;
+
+    width: 200px;
+    height: 50px;
+    
+    font-size: 0.5em;
+    font-weight: bold;
+
+    
+    color: black;
+    
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 30px black;
+
+    cursor: pointer;
+}
+
+.new-game:hover {
+    width: 210px;
+    height: 55px;
+    background-color: rgb(230, 230, 230);
+    font-size: 0.6em;
 }
 
 .jump {
     animation: jump 700ms ease-out;
 }
 
-.gameOver {
-    animation: gameOver 2s ease-out;
+.marioGameOver {
+    animation: marioGameOver 2s ease-out;
 }
+
 
 /*Animations*/
 @keyframes pipe-animation {
@@ -98,7 +140,7 @@
     }
 }
 
-@keyframes gameOver {
+@keyframes marioGameOver {
     0% {
         bottom: 103px;
     }
@@ -108,5 +150,15 @@
     }
     100% {
         bottom: -200px;
+    }
+}
+
+@keyframes screenGameOverAnimation {
+    from {
+        height: 0%;
+        font-size: 0;
+    }
+    to {
+        height: 100%;
     }
 }
