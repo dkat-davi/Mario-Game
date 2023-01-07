@@ -36,6 +36,17 @@
     animation: clouds-animation 15s linear infinite;
 }
 
+.floor {
+    position: absolute;
+    width: 100%;
+    height: 110vh;
+    bottom: 0;
+}
+
+.game-over {
+    
+}
+
 .jump {
     animation: jump 700ms ease-out;
 }
