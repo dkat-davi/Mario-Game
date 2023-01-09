@@ -5,18 +5,23 @@
 }
 
 body {
-    display: flex;
-    flex-direction: column;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .game-board {
-    width: 100%;
-    height: 85vh;
-    background-image: linear-gradient(to bottom, #87CEEB, #E0F6FF);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    height: 100vh;
     margin: auto;
-    position: relative;
     overflow: hidden;
+}
+
+.sky {
+    position: relative;
+    height: 85%;
+    background-image: linear-gradient(to bottom, #87CEEB, #E0F6FF);
 }
 
 .pipe {
@@ -39,16 +44,6 @@ body {
     animation: clouds-animation 15s linear infinite;
 }
 
-.score {
-    position: absolute;
-    bottom: 1rem;
-    right: 2rem;
-    font-size: 3em;
-    font-weight: bold;
-    color: yellow;
-    text-shadow: 3px 3px 0px black;
-}
-
 .floor {
     position: absolute;
     width: 100%;
@@ -56,27 +51,40 @@ body {
     bottom: 0;
 }
 
-.game-over-screen {
-    display: none; 
-    
+.score {
     position: absolute;
+    bottom: 15%;
+    right: 5%;
+   
+    font-size: 3em;
+    font-weight: bold;
+    color: yellow;
+    text-shadow: 3px 3px 0px black;
+}
 
+.game-over-screen {
+    position: absolute;
+    display: none; 
     flex-direction: column;
+    
+
     justify-content: center;
     align-items: center;
 
     font-size: 2em;
     color: white;
     background-color: rgb(12, 0, 0);
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
 }
 
-.game-over-screen h1{
-    margin-bottom: 30px;
+.final-score {
+    font-size: 1em;
+    font-weight: bold;
+    color: yellow;
 }
 
-.new-game {
+.btn-new-game {
     position: absolute;
     bottom: 30px;
 
@@ -89,13 +97,13 @@ body {
     
     color: black;
     
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 30px black;
+    border-radius: 15px;
+    box-shadow: inset 0px 0px 20px black;
 
     cursor: pointer;
 }
 
-.new-game:hover {
+.btn-new-game:hover {
     width: 210px;
     height: 55px;
     background-color: rgb(230, 230, 230);
@@ -106,8 +114,8 @@ body {
     animation: jump 700ms ease-out;
 }
 
-.marioGameOver {
-    animation: marioGameOver 2s ease-out;
+.mario-game-over {
+    animation: mario-game-over-animation 2s ease-out;
 }
 
 
@@ -154,7 +162,7 @@ body {
     }
 }
 
-@keyframes marioGameOver {
+@keyframes mario-game-over-animation {
     0% {
         bottom: 103px;
     }
@@ -167,12 +175,12 @@ body {
     }
 }
 
-@keyframes screenGameOverAnimation {
+@keyframes screen-game-over-animation {
     from {
-        height: 0%;
+        height: 0vh;
         font-size: 0;
     }
     to {
-        height: 100%;
+        height: 100vh;
     }
 }

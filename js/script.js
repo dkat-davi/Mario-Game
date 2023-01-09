@@ -1,18 +1,18 @@
+const gameBoard = document.querySelector('main')
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
 const screenGameOver = document.querySelector('.game-over-screen');
-const newGameButton = document.querySelector('.new-game');
-const body = document.querySelector('body')
+const newGameButton = document.querySelector('.btn-new-game');
 const score = document.querySelector('.score')
-const finalScore = document.querySelector('.points')
+const finalScore = document.querySelector('.final-score')
 
 /* Refresh page */
-function refresh() {
+const refresh = () => {
     document.location.reload(true);
 }
 
 let count = 0;
-function points() {
+const addScore = () => {
     count += 1;
     score.innerHTML = `Score = ${count}`
     finalScore.innerHTML = `Score = ${count}`
@@ -27,12 +27,13 @@ const jump = () => {
     }, 700)
 }
 
+
+
 /* Loop Game */
 const loop = setInterval(() => {
 
     const pipePosition = pipe.offsetLeft;
     const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
-
 
     /* Game Over */
     if (pipePosition <= 138  && pipePosition > 0 && marioPosition < 104) {
@@ -46,22 +47,26 @@ const loop = setInterval(() => {
             mario.src = "images/game-over.png"
             mario.style.width = '75px'
             mario.style.marginLeft = '60px'
-            mario.classList.add('marioGameOver') 
+            mario.classList.add('mario-game-over') 
             mario.style.bottom = '-15rem';
             
             /*Game Over screen*/
             screenGameOver.style.display = 'flex'
-            screenGameOver.style.animation = 'screenGameOverAnimation 1.5s linear'
+            screenGameOver.style.animation = 'screen-game-over-animation 1.5s linear'
+
+            score.classList.remove('score')
+            score.classList.add('final-score')
+            
 
             /* Stop Loop */
             clearInterval(loop)
     }
     else {
-        points();
+        addScore();
     }
 }, 10)
 
 newGameButton.addEventListener('click', refresh);
-body.addEventListener('click', jump)
+gameBoard.addEventListener('click', jump)
 document.addEventListener('keydown', jump);
 
