@@ -94,7 +94,7 @@ body {
 
 .game-over-screen {
     position: absolute;
-    display: flex; 
+    display: none; 
     flex-direction: column;
     
     justify-content: center;
