@@ -52,7 +52,7 @@ const resetGameBoard = () => {
     screenGameOver.style.display = 'none'
 
     mario.style.bottom = '0px';
-    mario.src = "assets/mario.gif"
+    mario.src = "assets/images/mario.gif"
     mario.style.width = '10rem'
     mario.classList.remove('mario-game-over')
 }
@@ -86,7 +86,7 @@ const startGame = () => {
 
                 /* Mario game over animation */
                 mario.style.bottom = `${marioPosition}px`;
-                mario.src = "assets/game-over.png"
+                mario.src = "assets/images/game-over.png"
                 mario.style.width = '75px'
                 mario.style.marginLeft = '60px'
                 mario.classList.add('mario-game-over') 
