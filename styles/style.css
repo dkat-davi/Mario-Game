@@ -94,12 +94,13 @@ body {
 
 .game-over-screen {
     position: absolute;
-    display: none; 
+    display: flex; 
     flex-direction: column;
-
+    
     justify-content: center;
     align-items: center;
-
+    text-align: center;
+    
     font-size: 1.5em;
     color: white;
     background-color: rgb(12, 0, 0);

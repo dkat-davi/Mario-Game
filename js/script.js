@@ -32,6 +32,20 @@ const jump = () => {
     }, 700)
 }
 
+const animatePipe = () => {
+    const mediaQuery768 = window.matchMedia('(max-width: 768px)')
+    const mediaQuery992 = window.matchMedia('(min-width: 992px)')
+    if (mediaQuery768.matches) {
+        pipe.style.animation = 'pipe-animation 1.1s infinite linear'
+    }
+    else if (mediaQuery992.matches) {
+        pipe.style.animation = 'pipe-animation 2s infinite linear'
+    }
+    else{
+        pipe.style.animation = 'pipe-animation 1.5s infinite linear'
+    }
+}
+
 const resetGameBoard = () => {
     score.innerHTML = `Score = 0`
     record.innerHTML = `Score = ${scoreCount}`
@@ -51,7 +65,8 @@ const newGame = () => {
 const startGame = () => {
     startGameScreen.style.display = 'none'
     pipe.style.display = 'block'
-    pipe.style.animation = 'pipe-animation 1.5s infinite linear'
+
+    animatePipe()
 
     /* Loop Game */
     const loop = setInterval(() => {
