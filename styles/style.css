@@ -1,12 +1,40 @@
+@font-face {
+    font-family: 'Mario Font';
+    src: url(../assets/font-mario.ttf);
+} 
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Mario Font';
 }
 
 body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.start-screen {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+
+    font-size: 1.5em;
+    font-weight: bold;
+    color: yellow;
+    text-shadow: 3px 3px 0px black;
+
+    cursor: pointer;
+    animation: start-game-animation 3s infinite;
+}
+
+.start-screen:hover {
+    font-size: 1.6em;
+}
+
 
 .game-board {
     position: absolute;
@@ -28,7 +56,7 @@ body {
     position: absolute;
     bottom: 0;
     width: 5rem;
-    animation: pipe-animation 1.5s infinite linear;
+    right: 2%;
 }
 
 .mario {
@@ -56,7 +84,7 @@ body {
     bottom: 15%;
     right: 5%;
    
-    font-size: 3em;
+    font-size: 1.5em;
     font-weight: bold;
     color: yellow;
     text-shadow: 3px 3px 0px black;
@@ -66,12 +94,11 @@ body {
     position: absolute;
     display: none; 
     flex-direction: column;
-    
 
     justify-content: center;
     align-items: center;
 
-    font-size: 2em;
+    font-size: 1.5em;
     color: white;
     background-color: rgb(12, 0, 0);
     width: 100vw;
@@ -79,6 +106,7 @@ body {
 }
 
 .final-score {
+    margin-top: 20px;
     font-size: 1em;
     font-weight: bold;
     color: yellow;
@@ -92,8 +120,6 @@ body {
     height: 50px;
     
     font-size: 0.5em;
-    font-weight: bold;
-
     
     color: black;
     
@@ -182,5 +208,19 @@ body {
     }
     to {
         height: 100vh;
+    }
+}
+
+@keyframes start-game-animation {
+    0% {
+        top: 55%;
+    }
+
+    50% {
+        top: 52%;
+    }
+
+    100% {
+        top: 55%;
     }
 }
