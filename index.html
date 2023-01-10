@@ -6,30 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mario Game</title>
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
     <script src="js/script.js" defer></script>
 </head>
 <body>
     <main class="game-board">
+        
         <div class="sky">
+            
             <div class="start-screen">
                 <h1>Start Game</h1>
             </div>
+
+            <div class="score-board">
+                <p class="score">Score   = 0</p>
+                <p class="record">Record = 0</p>
+            </div>
+
             <img src="assets/clouds.png" class="clouds">
+            
             <img src="assets/mario.gif" alt="mario" class="mario">
+            
             <img src="assets/pipe.png" alt="pipe" class="pipe">
         </div>
+
         <div class="floor">
             <img src="assets/floor.png" alt="floor-image">
-            <p class="score">Score = 0</p>
         </div>
+
     </main>
 
 
 
     <div class="game-over-screen">
         <h1>Game Over</h1>
-        <p class="final-score">Score = 0</p>
+
+        <div class="final-score-board">
+            <p class="final-score">Score = 0</p>
+            <p class="final-record" id="record">Record = 0</p>
+        </div>
+        
         <button class="btn-new-game">NEW GAME</button>
     </div>
     

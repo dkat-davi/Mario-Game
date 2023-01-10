@@ -2,17 +2,26 @@ const gameBoard = document.querySelector('main')
 const startGameScreen = document.querySelector('.start-screen')
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
-const screenGameOver = document.querySelector('.game-over-screen');
+const screenGameOver = document.querySelector('.game-over-screen')
 const newGameButton = document.querySelector('.btn-new-game');
 const score = document.querySelector('.score')
+const record = document.querySelector('.record')
 const finalScore = document.querySelector('.final-score')
+const finalRecord = document.querySelector('.final-record')
 
-let count = 0;
+let scoreCount = 0
+let recordCount = 0
 const addScore = () => {
-    count += 1;
-    score.innerHTML = `Score = ${count}`
-    finalScore.innerHTML = `Score = ${count}`
-    console.log('Funfou')
+    score.innerHTML = `Score = ${scoreCount}`
+    finalScore.innerHTML = `Score = ${scoreCount}`
+
+    if (scoreCount >= recordCount) {
+        recordCount = scoreCount
+    }
+    
+    record.innerHTML = `Record = ${recordCount}`
+
+    scoreCount += 1;
 }
 
 const jump = () => {
@@ -23,8 +32,20 @@ const jump = () => {
     }, 700)
 }
 
-const refresh = () => {
-    document.location.reload(true)
+const resetGameBoard = () => {
+    score.innerHTML = `Score = 0`
+    record.innerHTML = `Score = ${scoreCount}`
+    screenGameOver.style.display = 'none'
+
+    mario.style.bottom = '0px';
+    mario.src = "assets/mario.gif"
+    mario.style.width = '10rem'
+    mario.classList.remove('mario-game-over')
+}
+
+const newGame = () => {
+    resetGameBoard()
+    startGame()
 }
 
 const startGame = () => {
@@ -41,11 +62,12 @@ const startGame = () => {
         document.addEventListener('keydown', jump);
 
         /* Game Over */
-        if (pipePosition <= 138  && pipePosition > 0 && marioPosition < 104 && count != 1) {
-                
+        if (pipePosition <= 138  && pipePosition > 0 && marioPosition < 104)
+        {
                 /* Pipe game over animation */
-                pipe.style.animation = 'none'
-                pipe.style.left = `${pipePosition}px`
+                // pipe.style.animation = 'none'
+                // pipe.style.left = `${pipePosition}px`
+                pipe.style.display = 'none'
 
                 /* Mario game over animation */
                 mario.style.bottom = `${marioPosition}px`;
@@ -53,16 +75,15 @@ const startGame = () => {
                 mario.style.width = '75px'
                 mario.style.marginLeft = '60px'
                 mario.classList.add('mario-game-over') 
-                mario.style.bottom = '-15rem';
+                
                 
                 /*Game Over screen*/
                 screenGameOver.style.display = 'flex'
                 screenGameOver.style.animation = 'screen-game-over-animation 1.5s linear'
 
-                score.classList.remove('score')
-                score.classList.add('final-score')
+                scoreCount = 0
 
-                count = 1
+                finalRecord.innerHTML = `Record = ${recordCount}`
 
                 /* Stop Loop */
                 clearInterval(loop)
@@ -73,8 +94,8 @@ const startGame = () => {
     }, 10)
 }
 
-
+/* Events */
 startGameScreen.addEventListener('click', startGame)
-newGameButton.addEventListener('click', refresh);
+newGameButton.addEventListener('click', newGame);
 
 
