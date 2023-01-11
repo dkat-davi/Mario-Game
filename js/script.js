@@ -13,8 +13,14 @@ let scoreCount = 0
 let recordCount = localStorage.getItem('record')
 
 const getRecord = () => {
+    if (recordCount == null) {
+        recordCount = 0   
+    }
+
     localStorage.setItem('record', recordCount)
+
     record.innerHTML = `Record = ${localStorage.getItem('record')}`
+
 }
 
 const addScore = () => {
