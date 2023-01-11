@@ -10,7 +10,13 @@ const finalScore = document.querySelector('.final-score')
 const finalRecord = document.querySelector('.final-record')
 
 let scoreCount = 0
-let recordCount = 0
+let recordCount = localStorage.getItem('record')
+
+const getRecord = () => {
+    localStorage.setItem('record', recordCount)
+    record.innerHTML = `Record = ${localStorage.getItem('record')}`
+}
+
 const addScore = () => {
     score.innerHTML = `Score = ${scoreCount}`
     finalScore.innerHTML = `Score = ${scoreCount}`
@@ -20,7 +26,7 @@ const addScore = () => {
     }
     
     record.innerHTML = `Record = ${recordCount}`
-
+    
     scoreCount += 1;
 }
 
@@ -36,7 +42,7 @@ const animatePipe = () => {
     const mediaQuery768 = window.matchMedia('(max-width: 768px)')
     const mediaQuery992 = window.matchMedia('(min-width: 992px)')
     if (mediaQuery768.matches) {
-        pipe.style.animation = 'pipe-animation 1.1s infinite linear'
+        pipe.style.animation = 'pipe-animation 1s infinite linear'
     }
     else if (mediaQuery992.matches) {
         pipe.style.animation = 'pipe-animation 2s infinite linear'
@@ -49,6 +55,10 @@ const animatePipe = () => {
 const resetGameBoard = () => {
     score.innerHTML = `Score = 0`
     record.innerHTML = `Score = ${scoreCount}`
+
+    score.style.display = 'block'
+    record.style.display = 'block'
+
     screenGameOver.style.display = 'none'
 
     mario.style.bottom = '0px';
@@ -80,8 +90,6 @@ const startGame = () => {
         if (pipePosition <= 138  && pipePosition > 0 && marioPosition < 104)
         {
                 /* Pipe game over animation */
-                // pipe.style.animation = 'none'
-                // pipe.style.left = `${pipePosition}px`
                 pipe.style.display = 'none'
 
                 /* Mario game over animation */
@@ -98,7 +106,10 @@ const startGame = () => {
 
                 scoreCount = 0
 
+                score.style.display = 'none'
+                record.style.display = 'none'
                 finalRecord.innerHTML = `Record = ${recordCount}`
+                localStorage.setItem('record', recordCount)
 
                 /* Stop Loop */
                 clearInterval(loop)
@@ -112,5 +123,5 @@ const startGame = () => {
 /* Events */
 startGameScreen.addEventListener('click', startGame)
 newGameButton.addEventListener('click', newGame);
-
+window.addEventListener('load', getRecord)
 

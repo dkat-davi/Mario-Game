@@ -61,8 +61,8 @@ body {
     font-size: 1.2em;
 }
 
-.score {
-    margin-bottom: 10px;
+.score, .final-score {
+    margin-bottom: 5px;
 }
 
 .clouds {
@@ -113,10 +113,6 @@ body {
     font-size: 1em;
     font-weight: bold;
     color: yellow;
-}
-
-.final-score {
-    margin-bottom: 5px;
 }
 
 .btn-new-game {
